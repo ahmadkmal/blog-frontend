@@ -9,6 +9,7 @@ const AddPost = (props) => {
     const [title , setTitle]= useState('');
     const [body , setBody]= useState('');
     const history = useHistory();
+   
     const handleSubmit = async e => {
         e.preventDefault();
         let api = `https://blog-pwc.herokuapp.com/user/${props.username}`;
@@ -17,10 +18,11 @@ const AddPost = (props) => {
           headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${props.token}`},
           cache: 'no-cache',
         };
+        console.log('axios--->',{title,body})
         axios.post(api,{title,body},options)
           .then(data => {
               console.log('add post --->',data);
-            history.push(`/post/${data.id}`);}
+            history.push(`/post/${data.data[0]._id}`);}
           ).catch(err=>console.log(err));
         
       };
@@ -34,10 +36,10 @@ const AddPost = (props) => {
                 id='title'
                 className='pFonts borderBu '
                 type='text'
-                onChange={setTitle}>
+                onChange={e=>setTitle(e.target.value)}>
               </Form.Control>
             <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Control as="textarea" rows="3" placeholder="body" onChange={setBody}/>
+                <Form.Control as="textarea" rows="3" placeholder="body" onChange={e=>setBody(e.target.value)}/>
             </Form.Group>
             <button type="submit" className="btn btn-primary btn-block">Add</button>
         </Form>
@@ -47,7 +49,9 @@ const AddPost = (props) => {
 }
 const mapStateToProps = (state) => {
     return {
-      user: state.auth.token,
+
+        username: state.auth.user.username,
+      token: state.auth.token,
     };
   };
  
