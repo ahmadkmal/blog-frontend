@@ -5,7 +5,9 @@ import Post from '../post';
 import Auth from '../auth';
 import Signup from '../signup';
 import Login from '../signin';
-import EditBody from '../editBody'
+import EditBody from '../editBody';
+import AddBottom from '../addBottom';
+import AddPost from '../addPost'
 const Main = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -14,17 +16,13 @@ const Main = (props) => {
     <>
       <Route exact path="/">
         <Home/>
-        <Auth>
-        <img className='addpost' src='https://pngimg.com/uploads/plus/plus_PNG115.png' alt='add post'/>
-        </Auth>
+        <AddBottom/>
       </Route>
 
 
       <Route exact path="/post/:id">
         <Post/>
-        <Auth>
-        <img className='addpost' src='https://pngimg.com/uploads/plus/plus_PNG115.png' alt='add post'/>
-        </Auth>
+        <AddBottom/>
       </Route>
       <Route exact path="/body/:id">
         
@@ -44,8 +42,8 @@ const Main = (props) => {
       <Login/>
       </Route>
 
-      <Route exact path="/post">
-    
+      <Route exact path="/addPost">
+        <AddPost/>
       </Route>
 
     </>

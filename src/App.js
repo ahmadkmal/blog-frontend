@@ -9,17 +9,19 @@ import * as actions from './store/reducers/auth';
 function App(props) {
   useEffect(() => {
     props.load();
-   
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
       <Header />
+      <div id='mainid'>
+        <Main />
+      </div>
 
-      <Main />
 
       <Footer />
-     
+
     </>
   );
 }
@@ -30,6 +32,6 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch, getState) => ({
   load: () => dispatch(actions.load()),
-  
+
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

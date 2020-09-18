@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { NavLink, Link } from 'react-router-dom';
 import Show from '../show';
 import Form from 'react-bootstrap/Form';
+import { useHistory } from "react-router-dom";
 import { MDBInput } from 'mdbreact';
 import FontAwesome from 'react-fontawesome';
 import './style.scss';
@@ -15,17 +16,19 @@ const Login = (props) => {
     password: '',
   };
   const [signup, setSignup] = useState(false);
-
+  const history = useHistory();
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    if(props.loggedIn){
+        history.push(`/`);
+    }
+  }, [props.loggedIn]);
   const handleChange = e => {
     state[e.target.name] = e.target.value;
   };
   const handleSubmit = e => {
     e.preventDefault();
     props.login(state.username, state.password);
-    
   };
   return (
     <>
@@ -55,7 +58,7 @@ const Login = (props) => {
                 onChange={handleChange}>
               </Form.Control>
               <button id='signInBt'>SIGN IN</button>
-              <p className='newUser pFonts' >New User ? <Link  onClick={() => { setSignup(true); }}  >Register </Link></p>
+              <p className='newUser pFonts' >New User ? <Link  onClick={() =>{history.push(`/sign`);}}  >Register </Link></p>
             </form>
           </Show>
         </div>

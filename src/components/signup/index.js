@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import Show from '../show';
 import * as actions from '../../store/reducers/auth';
 import Form from 'react-bootstrap/Form';
+import { useHistory } from "react-router-dom";
 
 const SignUP = (props) => {
   const state = {
@@ -12,6 +13,13 @@ const SignUP = (props) => {
     email: '',
     role: '',
   };
+  const history = useHistory();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if(props.loggedIn){
+        history.push(`/`);
+    }
+  }, [props.loggedIn]);
   const [redirect, setRedirect] = useState(false);
   const handleChange = e => {
     console.log('signuo---->', state);
@@ -24,9 +32,9 @@ const SignUP = (props) => {
   };
   return (
     <>
-      <Show condition={props.loggedIn} >
-        {(redirect === true) ? <Redirect to='/' /> : null}
-      </Show>
+    <div className='back'>
+       
+       <div className='sign'>
       <Show condition={!props.loggedIn}>
         {/* <div className='flexRight'> */}
         <form className='login' onSubmit={handleSubmit}  >
@@ -42,6 +50,7 @@ const SignUP = (props) => {
             placeholder="Password"
             name="password"
             id='password'
+            type='password'
             onChange={handleChange}
             className='borderBu pFonts'
           >
@@ -63,6 +72,8 @@ const SignUP = (props) => {
           <button id='signInBt'>SING UP</button>
         </form>
       </Show>
+      </div>
+      </div>
     </>
   );
 };

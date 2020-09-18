@@ -35,9 +35,9 @@ body{
 #root{
     width: 100vw;
     min-height: 100vh;
+    clear: both;
+    position: absolute;
 }
-
-#footer{
-    position: fixed;
-    bottom: 0px;
+img{
+    max-width: 100vw;
 }

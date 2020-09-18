@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import Auth from '../auth'
+import Auth from '../auth';
+import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import { connect } from 'react-redux';
 
-const Add = (props) => {
+const AddPost = (props) => {
     const [title , setTitle]= useState('');
     const [body , setBody]= useState('');
     const history = useHistory();
@@ -17,22 +19,25 @@ const Add = (props) => {
         };
         axios.post(api,{title,body},options)
           .then(data => {
+              console.log('add post --->',data);
             history.push(`/post/${data.id}`);}
-          ).catch(err=console.log(err));
+          ).catch(err=>console.log(err));
         
       };
     return (
      
         <Auth>
-            <div className="form-group">
-                <label>title</label>
-                <input type="text" className="form-control" placeholder="name" onChange={setTitle}/>
-            </div>
-
-          <Form>
+          <Form onSubmit={handleSubmit}>
+          <Form.Control
+                placeholder="title"
+                name="title"
+                id='title'
+                className='pFonts borderBu '
+                type='text'
+                onChange={setTitle}>
+              </Form.Control>
             <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label> body</Form.Label>
-                <Form.Control as="textarea" rows="3" onChange={setBody}/>
+                <Form.Control as="textarea" rows="3" placeholder="body" onChange={setBody}/>
             </Form.Group>
             <button type="submit" className="btn btn-primary btn-block">Add</button>
         </Form>
@@ -40,4 +45,10 @@ const Add = (props) => {
 
     )
 }
-export default Add;
+const mapStateToProps = (state) => {
+    return {
+      user: state.auth.token,
+    };
+  };
+ 
+  export default connect(mapStateToProps)(AddPost);
