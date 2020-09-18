@@ -5,7 +5,7 @@ import Post from '../post';
 import Auth from '../auth';
 import Signup from '../signup';
 import Login from '../signin';
-import 
+import EditBody from '../editBody'
 const Main = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,9 +28,8 @@ const Main = (props) => {
       </Route>
       <Route exact path="/body/:id">
         
-        <Auth>
-        
-        </Auth>
+        <EditBody/>
+     
       </Route>
 
       <Route exact path="/user/:username">

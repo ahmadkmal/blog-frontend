@@ -1,26 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import superagent from 'superagent';
 import Auth from '../auth';
 import Form from 'react-bootstrap/Form';
-const Body = (props) => {
+import { connect } from 'react-redux';
+
+const API = process.env.API_URL || 'https://blog-pwc.herokuapp.com';
+const EditBody = (props) => {
     const history = useHistory();
+    const [data, setData] = useState({});
+    const [loader, setLoader] = useState(false);
+    let { id } = useParams();
+    useEffect(() => {
+        setLoader(true);
+        console.log("post data--->");
+        (async () => {
+            await superagent.get(`${API}/body/${id}`)
+                .set('Content-Type', 'application/json')
+                .set('Authorization',`Bearer ${props.token}`)
+                .then(data => {
+                    setData(data.body);
+                    setLoader(false);
+                    console.log("post data--->", data.body)
+                }).catch(err => console.log(err));
+        })();
+
+
+    }, []);
     return (
         <div>
-            <Auth capability={'admin'} owner={props.data.username}>
+            <Auth capability={'admin'} owner={data.username||''}>
             <div>
-                <img src={props.data.userImage || 'holder'} />
-                <p>{props.data.username}</p>
-                <p>{props.data.date}</p>
+                <img src={data.userImage || 'holder'} />
+                <p>{data.username}</p>
+                <p>{data.date}</p>
             </div>
 
             <div>
                 <p>
-                    {props.data.body}
+                    {data.body}
                 </p>
                 <Form>
             <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>edit this body</Form.Label>
-                <Form.Control as="textarea" rows="3" value={props.data.body}/>
+                <Form.Control as="textarea" rows="3" value={data.body}/>
             </Form.Group>
             <button type="submit" className="btn btn-primary btn-block">Add</button>
         </Form>
@@ -33,4 +57,11 @@ const Body = (props) => {
     )
 
 }
-export default Body;
+const mapStateToProps = (state) => {
+    return {
+        token: state.auth.token,
+    };
+  };
+  
+  export default connect(mapStateToProps)(EditBody);
+  
