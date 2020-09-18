@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
-
+import Home from '../home'
 
 
 
@@ -11,6 +11,7 @@ const Main = (props) => {
   return (
     <>
       <Route exact path="/">
+        <Home/>
       </Route>
 
 
