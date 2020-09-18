@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import Profile from '../profile';
-import Login from '../login';
-import AddPost from '../addPost';
+
+
 
 
 const Main = (props) => {
@@ -20,15 +19,15 @@ const Main = (props) => {
       </Route>
 
       <Route exact path="/user/:username">
-        <Profile />
+        
       </Route>
 
       <Route exact path="/sign">
-        <Login />  
+       
       </Route>
 
       <Route exact path="/post">
-        <AddPost />
+    
       </Route>
 
     </>
