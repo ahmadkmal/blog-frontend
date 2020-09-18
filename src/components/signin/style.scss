@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=News+Cycle:wght@700&display=swap");
+.pFonts {
+  font-family: "News Cycle", sans-serif;
+  color: white;
+}
+.login {
+  display: grid;
+    justify-content: normal;
+  box-sizing: border-box;
+  background-color: #00000087;
+  width: 54vw;  border-radius: 30px;
+  padding: 3vw;
+  margin-top: 9vw;
+  margin: auto;
+}
+aside.form-elegant {
+  width: 29vw;
+  padding: 3vw;
+  height: 30vw;
+  margin-left: 25vw;
+}
+.flexRight {
+  float: right;
+}
+/* footer {
+  clear: both;
+} */
+button#signInBt {
+  margin-top: 4%;
+  height: 35px;
+  margin-bottom: 3%;
+  border-radius: 6px;
+  background-color: #00000087;
+  color: #d9d9d9;
+}
+.sign {
+  width: auto;
+  margin: auto;
+   border-radius: 30px;
+}
+.labelForm {
+  color: #d9d9d9;
+  font-family: "Inconsolata", Consolas, monospace;
+  text-align: center;
+  font-size: 25px;
+}
+.newUser {
+  color: #d9d9d9;
+  font-size: 14px;}
+h1#journey {
+  margin-top: -24.5%;
+  font-size: 130%;
+  margin-left: 5%;
+  color: d9d9d9;
+  color: #d9d9d9b0;
+}
+/* ----------------------------------------- */
+.back {
+  background-image: url(https://images.unsplash.com/photo-1528297506728-9533d2ac3fa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  height: 85vh;
+  background-size: cover;
+  padding: 14vh 3vw;
+}
+
+/* Basic styles */
+h1 {
+  position: relative;
+  float: left;
+  color: #d9d9d9;
+  font-family: "Inconsolata", Consolas, monospace;
+  font-size: 2em;
+  margin-top: -29%;
+  margin-left: 3%;
+}
+h1 span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #00000087;
+  width: 100%;
+  border-left: 0.1em solid transparent;
+  -webkit-animation: typing 3s steps(16) forwards, cursor 1s infinite;
+  animation: typing 3s steps(16) forwards, cursor 1s infinite;
+}
+/* Animation */
+/* @-webkit-keyframes typing {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+@-webkit-keyframes cursor {
+  50% {
+    border-color: black;
+  }
+}
+@keyframes typing {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+@keyframes cursor {
+  50% {
+    border-color: black;
+  }
+} */
+a.gobttn {
+  color: green;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 5px;
+}
+span#goBack {
+  font-size: 1.5vw;
+  margin-top: 4%;
+  margin-left: 19vw;
+  color: #d9d9d9;
+}
+#goBackBtn {
+  color: #d9d9d9;
+  text-decoration: none;
+  font-size: 20px;
+  background-color: aqua !important;
+}
+.btn {
+  color: #d9d9d9;
+}
+.btn:hover {
+  color: #d9d9d9;
+  text-decoration: none;
+}
+.newUser a {
+  color: #d9d9d9;
+  text-decoration: none;
+}
+.borderBu {
+  background-color: transparent;
+  border-color: none;
+  border: none;
+  border-bottom: 1px white solid;
+}
+.form-control:focus {
+  color: #495057;
+  background-color: transparent;
+  border-color: #ffffff;
+}
+.backsize {
+  font-size: 20px;
+}
+.formStyle {
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+}
+input[type="password"]::placeholder {
+  color: #d9d9c4 !important;
+}

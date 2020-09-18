@@ -40,16 +40,7 @@ const validateToken = (token,dispatch) => {
   try {
     console.log('token--->',token);
     let user = jwt.verify(token, 'ahmadkmal');
-    superagent.get(`${API}/token`)
-      .set('Content-Type', 'application/json' )
-      .set('Authorization',`Bearer ${token}`)
-      .then(data => {
-        console.log('token state',data.body);
-        if(data.body === 'token'){
-          
-          dispatch(logout());
-        }
-      });
+    
     cookie.save('auth', token, { path: '/' });
     dispatch(setUserIn({user,token}));
 

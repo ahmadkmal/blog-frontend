@@ -50,16 +50,9 @@ function Header(props) {
                 <MDBDropdownItem > 
                   <NavLink className="pFonts" to="/"> Home</NavLink>
                 </MDBDropdownItem>
-                <MDBDropdownItem > 
-                  <NavLink className="pFonts" to={`/user/${props.username}`} >Profile Page
-                  </NavLink></MDBDropdownItem>
                 <MDBDropdownItem> 
                   <NavLink className="pFonts" to="/post">Add post</NavLink>
                 </MDBDropdownItem>
-                <Auth capability="admin">
-                  <MDBDropdownItem><NavLink className="pFonts" to="/admin">Admin Page</NavLink></MDBDropdownItem>
-                </Auth>
-                {/* <MDBDropdownItem><NavLink to="/admin">Admin</NavLink></MDBDropdownItem> */}
                 <MDBDropdownItem divider />
                 <MDBDropdownItem  onClick={() =>{
                   setRedirect(true);

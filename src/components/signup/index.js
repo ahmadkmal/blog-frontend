@@ -5,64 +5,75 @@ import Show from '../show';
 import * as actions from '../../store/reducers/auth';
 import Form from 'react-bootstrap/Form';
 
-const Signin = (props) => {
-    const [role , setrole]= useState('');
-    const [email , setemail]= useState('');
-    const [password , setpassword]= useState('');
-    const [username , setusername]= useState('');
-    const [name , setname]= useState('');
-      const handleChange = e => {
-        console.log('signuo---->', state);
-        setState({...state,})[e.target.name] = e.target.value;
-      };
-    
-      const handleSubmit = e => {
-        e.preventDefault();
-        props.signup(state.username, state.password, state.email, state.role);
-        setRedirect(true);
-      };
-        return (
-            <form>
-            <h3>Sign Up</h3>
-
-            <div className="form-group">
-                <label>name</label>
-                <input type="text" className="form-control" placeholder="name" onChange={setname}/>
-            </div>
-
-            <div className="form-group">
-                <label>username</label>
-                <input type="text" className="form-control" placeholder="name" onChange={setusername}/>
-            </div>
-
-            <div className="form-group">
-                <label>Email address</label>
-                <input type="email" className="form-control" placeholder="Enter email" onChange={setemail}/>
-            </div>
-
-            <div className="form-group">
-                <label>Password</label>
-                <input type="password" className="form-control" placeholder="Enter password" onChange={setpassword}/>
-            </div>
-
-            <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
-            <p className="forgot-password text-right">
-                Already registered <a href="#">sign in?</a>
-            </p>
-        </form>
-        );
-    
-}
-const mapStateToProps = (state) => {
-    console.log('state------>', state);
-    return {
-      loggedIn: state.auth.loggedIn,
-      user: state.auth.user,
-    };
+const SignUP = (props) => {
+  const state = {
+    username: '',
+    password: '',
+    email: '',
+    role: '',
   };
-  
-  
-  const mapDispatchToProps = (dispatch, getState) => ({
-    signup: (username, password, email, role) => dispatch(actions.signup(username, password, email, role)),
-  });
-export default connect(mapStateToProps, mapDispatchToProps)(Signin);
+  const [redirect, setRedirect] = useState(false);
+  const handleChange = e => {
+    console.log('signuo---->', state);
+    state[e.target.name] = e.target.value;
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.signup(state.username, state.password, state.email, state.role);
+    setRedirect(true);
+  };
+  return (
+    <>
+      <Show condition={props.loggedIn} >
+        {(redirect === true) ? <Redirect to='/' /> : null}
+      </Show>
+      <Show condition={!props.loggedIn}>
+        {/* <div className='flexRight'> */}
+        <form className='login' onSubmit={handleSubmit}  >
+          <label className='labelForm pFonts'>SIGN UP</label>
+          <Form.Control
+            placeholder="User Name"
+            name="username"
+            id='username'
+            className='borderBu pFonts'
+            onChange={handleChange}>
+          </Form.Control>
+          <Form.Control
+            placeholder="Password"
+            name="password"
+            id='password'
+            onChange={handleChange}
+            className='borderBu pFonts'
+          >
+          </Form.Control>
+          <Form.Control
+            placeholder="Email"
+            name="email"
+            onChange={handleChange}
+            className='borderBu pFonts'
+          >
+          </Form.Control>
+          <Form.Control
+            placeholder="Role"
+            name="role"
+            onChange={handleChange}
+            className='borderBu'
+          >
+          </Form.Control>
+          <button id='signInBt'>SING UP</button>
+        </form>
+      </Show>
+    </>
+  );
+};
+const mapStateToProps = (state) => {
+  console.log('state------>', state);
+  return {
+    loggedIn: state.auth.loggedIn,
+    user: state.auth.user,
+  };
+};
+const mapDispatchToProps = (dispatch, getState) => ({
+  signup: (username, password, email, role) => dispatch(actions.signup(username, password, email, role)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(SignUP);

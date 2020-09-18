@@ -12,19 +12,22 @@ const Auth = (props) =>{
   let okToRender = false;
 
   try {
-    okToRender = props.loggedIn && (
+    okToRender = props.loggedIn && ((
       props.capability ?
         props.user.role.includes(props.capability)
         : true
-    );
+    )||(props.owner?props.owner==props.user.username:false));
   } catch (e) {
     console.warn('Not Authorized!');
   }
 
   return (
+
     <Show condition={okToRender}>
       {props.children}
     </Show>
+      
+    
   );
  
 };
