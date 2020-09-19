@@ -8,7 +8,7 @@ const Body = (props) => {
     return (
         <div className="mainodydiv">
             <div className="firstdiv">
-                <img className="postimg" src={props.data.userImage || 'holder'} alt="" />
+                <img className="postimg" src={props.data.userImage || 'https://img.onmanorama.com/content/dam/mm/en/news/columns/straight-talk/images/2020/7/16/pricewaterhousecoopers-pwc.jpg'} alt="" />
                 <p>{props.data.username}</p>
                 <p>{props.data.date}</p>
             </div>

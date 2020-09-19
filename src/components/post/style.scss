@@ -1,14 +1,19 @@
 .postheader {
     display: grid;
     grid-column-gap: 3%;
+    grid-auto-columns: -webkit-max-content;
     grid-auto-columns: max-content;
     grid-auto-flow: column;
-    margin: 7px 0px 11px 8px;
-    grid-template-columns: 100px 80vw;
+    margin: 7px 0 11px 8px;
+    grid-template-columns: 1fr 4fr;
     padding-bottom: 8px;
     border-bottom: 3px solid #d4d3ce;
     text-align: center;
+    /* overflow: auto; */
+    width: 95vw;
+    margin: 5px auto;
 }
+
 .postheader .card{
    width: auto;
 }
@@ -29,7 +34,7 @@
 }
 .addpost{
     position: sticky;
-    bottom: 20px;
+    bottom: 45px;
     right: 20px;
     width: 50px;
     height: 50px;

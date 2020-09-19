@@ -27,8 +27,9 @@ const Add = (props) => {
         <Auth>
         <Form onSubmit={handleSubmit}>
             <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Add to this</Form.Label>
-                <Form.Control as="textarea" rows="3" onChange={e=>setBody(e.target.value)}/>
+                <Form.Control as="textarea" rows="3"
+                placeholder='Add to story' 
+                onChange={e=>setBody(e.target.value)}/>
             </Form.Group>
             <button type="submit" className="btn btn-primary btn-block">Add</button>
         </Form>

@@ -156,6 +156,8 @@ button.btn-primary.btn.Ripple-parent.dropdown-toggle span {
 form {
   display: block;
   margin-top: 0em;
+  width: 93vw;
+  margin: auto;
 }
 
 .row {
@@ -316,7 +318,7 @@ span.navbar-brand {
 //     border-radius: 10px;
 // }
 
-@media (max-width: 760px) {
+
   html {
     width: min-content;
   }
@@ -328,7 +330,14 @@ span.navbar-brand {
     flex-grow: initial;
     align-items: center;
   }
+@media (min-width: 1024px){
+  .dropdown {
+    position: absolute;
+    margin-right: 2%;
+    right: 10px;
 }
+}
+  
 // a.pFonts.active {
 //   padding-left: 24px;
 // }
