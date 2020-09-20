@@ -12,7 +12,7 @@ const AddPost = (props) => {
    
     const handleSubmit = async e => {
         e.preventDefault();
-        let api = `https://blog-pwc.herokuapp.com/user/${props.username}`;
+        let api = `http://localhost:3003/user/${props.username}`;
         const options = {
           mode: 'cors',
           headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${props.token}`},

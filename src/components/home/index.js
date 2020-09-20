@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import superagent from 'superagent';
 import QuickPost from '../quickpost';
 
-const API = process.env.API_URL || 'https://blog-pwc.herokuapp.com';
+const API = process.env.API_URL || 'http://localhost:3003';
 
  const Home = () => {
 

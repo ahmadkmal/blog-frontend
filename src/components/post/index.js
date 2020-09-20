@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import PostHeader from './postHeader';
 import Body from '../body';
 import Add from '../add';
-const API = process.env.API_URL || 'https://blog-pwc.herokuapp.com';
+const API = process.env.API_URL || 'http://localhost:3003';
 import './style.scss';
 const Post = (props) => {
     const [data, setData] = useState({});

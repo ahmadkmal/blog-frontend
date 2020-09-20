@@ -8,7 +8,7 @@ const Add = (props) => {
     const [body , setBody]= useState('');
     const handleSubmit = async e => {
         e.preventDefault();
-        let api = `https://blog-pwc.herokuapp.com/post/${props.id}`;
+        let api = `http://localhost:3003/post/${props.id}`;
         const options = {
           mode: 'cors',
           headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${props.token}`},

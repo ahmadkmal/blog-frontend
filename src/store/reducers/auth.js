@@ -2,7 +2,7 @@ import superagent from 'superagent';
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
-const API = process.env.API_URL || 'https://blog-pwc.herokuapp.com';
+const API = process.env.API_URL || 'http://localhost:3003';
 
 const initialState = {
   loggedIn: false,

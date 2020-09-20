@@ -7,7 +7,7 @@ import Auth from '../auth';
 import Form from 'react-bootstrap/Form';
 import { connect } from 'react-redux';
 
-const API = process.env.API_URL || 'https://blog-pwc.herokuapp.com';
+const API = process.env.API_URL || 'http://localhost:3003';
 const EditBody = (props) => {
     const history = useHistory();
     const [body, setBody] = useState('');
@@ -30,7 +30,7 @@ const EditBody = (props) => {
     }, []);
     const handleSubmit = async e => {
         e.preventDefault();
-        let api = `https://blog-pwc.herokuapp.com/body/${id}`;
+        let api = `http://localhost:3003/body/${id}`;
         const options = {
           mode: 'cors',
           headers: { 'Content-Type': 'application/json' ,'Authorization': `Bearer ${props.token}`},
